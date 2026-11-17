@@ -1,0 +1,402 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 70;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BB0000000000000000000030 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000031 /* IOKit.framework */; };
+		BB0000000000000000000043 /* IOKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000031 /* IOKit.framework */; };
+		BB0000000000000000000044 /* OSLog.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000047 /* OSLog.framework */; };
+		BB0000000000000000000045 /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB0000000000000000000046 /* ServiceManagement.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB0000000000000000000052 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BB0000000000000000000010 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BB0000000000000000000042;
+			remoteInfo = BatteryGuardHelper;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BB0000000000000000000001 /* MactteryGuard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MactteryGuard.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB0000000000000000000031 /* IOKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = IOKit.framework; path = System/Library/Frameworks/IOKit.framework; sourceTree = SDKROOT; };
+		BB0000000000000000000046 /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		BB0000000000000000000047 /* OSLog.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OSLog.framework; path = System/Library/Frameworks/OSLog.framework; sourceTree = SDKROOT; };
+		BB0000000000000000000056 /* MactteryGuardHelper */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = MactteryGuardHelper; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		BB0000000000000000000002 /* BatteryGuard */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BatteryGuard; sourceTree = "<group>"; };
+		BB0000000000000000000040 /* Shared */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = Shared; sourceTree = "<group>"; };
+		BB0000000000000000000041 /* BatteryGuardHelper */ = {isa = PBXFileSystemSynchronizedRootGroup; explicitFileTypes = {}; explicitFolders = (); path = BatteryGuardHelper; sourceTree = "<group>"; };
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BB0000000000000000000003 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB0000000000000000000030 /* IOKit.framework in Frameworks */,
+				BB0000000000000000000045 /* ServiceManagement.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000000000000000000048 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB0000000000000000000043 /* IOKit.framework in Frameworks */,
+				BB0000000000000000000044 /* OSLog.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		25CF0B5030AAB86000326C4B /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000031 /* IOKit.framework */,
+				BB0000000000000000000046 /* ServiceManagement.framework */,
+				BB0000000000000000000047 /* OSLog.framework */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000004 = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000002 /* BatteryGuard */,
+				BB0000000000000000000040 /* Shared */,
+				BB0000000000000000000041 /* BatteryGuardHelper */,
+				BB0000000000000000000005 /* Products */,
+				25CF0B5030AAB86000326C4B /* Recovered References */,
+			);
+			sourceTree = "<group>";
+		};
+		BB0000000000000000000005 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BB0000000000000000000001 /* MactteryGuard.app */,
+				BB0000000000000000000056 /* MactteryGuardHelper */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BB0000000000000000000006 /* BatteryGuard */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB0000000000000000000007 /* Build configuration list for PBXNativeTarget "BatteryGuard" */;
+			buildPhases = (
+				BB0000000000000000000008 /* Sources */,
+				BB0000000000000000000003 /* Frameworks */,
+				BB0000000000000000000009 /* Resources */,
+				BB0000000000000000000050 /* Embed Helper Daemon */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB0000000000000000000051 /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				BB0000000000000000000002 /* BatteryGuard */,
+				BB0000000000000000000040 /* Shared */,
+			);
+			name = BatteryGuard;
+			packageProductDependencies = (
+			);
+			productName = MactteryGuard;
+			productReference = BB0000000000000000000001 /* MactteryGuard.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BB0000000000000000000042 /* BatteryGuardHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB0000000000000000000055 /* Build configuration list for PBXNativeTarget "BatteryGuardHelper" */;
+			buildPhases = (
+				BB0000000000000000000049 /* Sources */,
+				BB0000000000000000000048 /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			fileSystemSynchronizedGroups = (
+				BB0000000000000000000040 /* Shared */,
+				BB0000000000000000000041 /* BatteryGuardHelper */,
+			);
+			name = BatteryGuardHelper;
+			packageProductDependencies = (
+			);
+			productName = MactteryGuardHelper;
+			productReference = BB0000000000000000000056 /* MactteryGuardHelper */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BB0000000000000000000010 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2700;
+				LastUpgradeCheck = 2700;
+				TargetAttributes = {
+					BB0000000000000000000006 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+					BB0000000000000000000042 = {
+						CreatedOnToolsVersion = 27.0;
+					};
+				};
+			};
+			buildConfigurationList = BB0000000000000000000011 /* Build configuration list for PBXProject "BatteryGuard" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+				ko,
+			);
+			mainGroup = BB0000000000000000000004;
+			minimizedProjectReferenceProxies = 1;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BB0000000000000000000006 /* BatteryGuard */,
+				BB0000000000000000000042 /* BatteryGuardHelper */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BB0000000000000000000009 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BB0000000000000000000050 /* Embed Helper Daemon */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Helper Daemon";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "set -e\nHELPER_DIR=\"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.app/Contents/Library/LaunchDaemons\"\nmkdir -p \"${HELPER_DIR}\"\ncp \"${BUILT_PRODUCTS_DIR}/MactteryGuardHelper\" \"${HELPER_DIR}/MactteryGuardHelper\"\ncp \"${SRCROOT}/Packaging/com.loveaimg.mactteryguard.helper.plist\" \"${HELPER_DIR}/com.loveaimg.mactteryguard.helper.plist\"\nxattr -d com.apple.quarantine \"${HELPER_DIR}/com.loveaimg.mactteryguard.helper.plist\" 2>/dev/null || true\nxattr -d com.apple.quarantine \"${HELPER_DIR}/MactteryGuardHelper\" 2>/dev/null || true\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BB0000000000000000000008 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB0000000000000000000049 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BB0000000000000000000051 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BB0000000000000000000042 /* BatteryGuardHelper */;
+			targetProxy = BB0000000000000000000052 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		BB0000000000000000000020 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		BB0000000000000000000021 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+			};
+			name = Release;
+		};
+		BB0000000000000000000022 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 3U7V843LV2;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MactteryGuard;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loveaimg.mactteryguard;
+				PRODUCT_NAME = MactteryGuard;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		BB0000000000000000000023 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 3U7V843LV2;
+				ENABLE_APP_SANDBOX = NO;
+				ENABLE_HARDENED_RUNTIME = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = MactteryGuard;
+				INFOPLIST_KEY_LSUIElement = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.loveaimg.mactteryguard;
+				PRODUCT_NAME = MactteryGuard;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+		BB0000000000000000000053 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 3U7V843LV2;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_NAME = MactteryGuardHelper;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Debug;
+		};
+		BB0000000000000000000054 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 2;
+				DEVELOPMENT_TEAM = 3U7V843LV2;
+				MACOSX_DEPLOYMENT_TARGET = 26.0;
+				MARKETING_VERSION = 0.2.0;
+				PRODUCT_NAME = MactteryGuardHelper;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 6.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BB0000000000000000000007 /* Build configuration list for PBXNativeTarget "BatteryGuard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0000000000000000000022 /* Debug */,
+				BB0000000000000000000023 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB0000000000000000000011 /* Build configuration list for PBXProject "BatteryGuard" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0000000000000000000020 /* Debug */,
+				BB0000000000000000000021 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB0000000000000000000055 /* Build configuration list for PBXNativeTarget "BatteryGuardHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB0000000000000000000053 /* Debug */,
+				BB0000000000000000000054 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BB0000000000000000000010 /* Project object */;
+}

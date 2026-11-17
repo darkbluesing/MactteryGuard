@@ -1,0 +1,31 @@
+{
+  "" : {
+    "const-values" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuard-primary.swiftconstvalues",
+    "dependencies" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuard-primary.d",
+    "diagnostics" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuard-primary.dia",
+    "emit-module-dependencies" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuard-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuard-primary-emit-module.dia",
+    "pch" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuard-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuard-primary.swiftdeps"
+  },
+  "/Users/pakmac/BatteryGuard/BatteryGuard/BatteryGuardApp.swift" : {
+    "index-unit-output-path" : "/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuardApp.o",
+    "llvm-bc" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuardApp.bc",
+    "object" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryGuardApp.o"
+  },
+  "/Users/pakmac/BatteryGuard/BatteryGuard/BatteryMonitor.swift" : {
+    "index-unit-output-path" : "/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryMonitor.o",
+    "llvm-bc" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryMonitor.bc",
+    "object" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/BatteryMonitor.o"
+  },
+  "/Users/pakmac/BatteryGuard/BatteryGuard/PopoverView.swift" : {
+    "index-unit-output-path" : "/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/PopoverView.o",
+    "llvm-bc" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/PopoverView.bc",
+    "object" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/PopoverView.o"
+  },
+  "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}

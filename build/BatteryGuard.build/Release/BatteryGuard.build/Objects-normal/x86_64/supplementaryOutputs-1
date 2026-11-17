@@ -1,0 +1,12 @@
+{
+  "/Users/pakmac/BatteryGuard/BatteryGuard/BatteryGuardApp.swift" : {
+    "abi-baseline-json" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/x86_64/BatteryGuard.abi.json",
+    "const-values" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/x86_64/BatteryGuard-primary.swiftconstvalues",
+    "dependencies" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/x86_64/BatteryGuard-primary.d",
+    "diagnostics" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/x86_64/BatteryGuard-primary.dia",
+    "objc-header" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/x86_64/BatteryGuard-Swift.h",
+    "swiftdoc" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/x86_64/BatteryGuard.swiftdoc",
+    "swiftmodule" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/x86_64/BatteryGuard.swiftmodule",
+    "swiftsourceinfo" : "/Users/pakmac/BatteryGuard/build/BatteryGuard.build/Release/BatteryGuard.build/Objects-normal/x86_64/BatteryGuard.swiftsourceinfo"
+  }
+}
