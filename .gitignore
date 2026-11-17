@@ -2,7 +2,6 @@
 *.xcuserdata/
 DerivedData/
 .build/
-dist/
 staging/
 
 # macOS
