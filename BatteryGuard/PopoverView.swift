@@ -1,7 +1,7 @@
 import SwiftUI
 import AppKit
 
-/// Step 2 팝오버 (한국어 UI, 너비 320).
+/// Step 2 팝오버 (한국어·영어 UI, 너비 320).
 /// 구성: (a) 보정 배너 + 아이폰 스타일 배터리 아이콘 (%를 아이콘 안에 표시,
 /// 잔량에 따라 채움 너비·색 변화), (b) 어댑터·남은 시간, (c) 배터리 상세,
 /// (d) 충전 제어, (e) 알림(연결 끊김·오류 등 주의가 필요할 때만),
@@ -24,16 +24,16 @@ struct PopoverView: View {
 
             Divider()
 
-            statusRow(label: "어댑터", value: appState.monitor.isOnAC ? "연결됨" : "연결 안 됨")
+            statusRow(label: "어댑터", value: appState.monitor.isOnAC ? String(localized: "연결됨") : String(localized: "연결 안 됨"))
             statusRow(label: "남은 시간", value: timeRemainingText)
 
             Divider()
 
             statusRow(label: "사이클 수", value: cycleCountText)
-            statusRow(label: "배터리 상태", value: appState.monitor.condition?.displayName ?? "알 수 없음")
+            statusRow(label: "배터리 상태", value: appState.monitor.condition?.displayName ?? String(localized: "알 수 없음"))
             statusRow(
                 label: "최대 용량",
-                value: appState.monitor.maxCapacityPercent.map { "\($0)%" } ?? "알 수 없음"
+                value: appState.monitor.maxCapacityPercent.map { "\($0)%" } ?? String(localized: "알 수 없음")
             )
             statusRow(label: "온도", value: temperatureText)
 
@@ -119,17 +119,17 @@ struct PopoverView: View {
 
     private var statusText: String {
         if appState.daemonState?.calibrationActive == true {
-            return "macOS 보정 중"
+            return String(localized: "macOS 보정 중")
         } else if appState.daemonState?.controlState == .dischargeBack {
-            return "상한으로 되돌리는 중"
+            return String(localized: "상한으로 되돌리는 중")
         } else if appState.daemonState?.controlState == .failOpen {
-            return "오류 — 충전 허용됨"
+            return String(localized: "오류 — 충전 허용됨")
         } else if appState.monitor.isCharging {
-            return "충전 중"
+            return String(localized: "충전 중")
         } else if appState.monitor.isOnAC {
-            return "어댑터 전원"
+            return String(localized: "어댑터 전원")
         } else {
-            return "배터리 사용 중"
+            return String(localized: "배터리 사용 중")
         }
     }
 
@@ -173,7 +173,7 @@ struct PopoverView: View {
                     .font(.caption)
                     .foregroundStyle(.secondary)
             }
-            Text("\(appState.settings.toGuardSettings().lowerLimit)% 이하에서 재충전")
+            Text(String(format: String(localized: "%d%% 이하에서 재충전"), appState.settings.toGuardSettings().lowerLimit))
                 .font(.caption)
                 .foregroundStyle(.secondary)
             if appState.settings.upperLimit < 80 {
@@ -310,7 +310,7 @@ struct PopoverView: View {
                     .foregroundStyle(.orange)
             }
             if let daemonError = appState.daemonState?.lastError {
-                Text("오류: \(daemonError)")
+                Text(String(format: String(localized: "오류: %@"), daemonError))
                     .font(.caption)
                     .foregroundStyle(.red)
             }
@@ -354,12 +354,14 @@ struct PopoverView: View {
 
     // MARK: - 공용
 
-    private func sectionHeader(_ title: String) -> some View {
+    /// 섹션 제목. LocalizedStringKey를 받아 Text가 카탈로그에서 번역한다
+    /// (String 변수를 Text에 넘기면 번역되지 않는다).
+    private func sectionHeader(_ title: LocalizedStringKey) -> some View {
         Text(title)
             .font(.headline)
     }
 
-    private func statusRow(label: String, value: String) -> some View {
+    private func statusRow(label: LocalizedStringKey, value: String) -> some View {
         HStack {
             Text(label)
                 .foregroundStyle(.secondary)
@@ -371,25 +373,29 @@ struct PopoverView: View {
 
     private var cycleCountText: String {
         if let count = appState.monitor.cycleCount {
-            return "\(count)회"
+            return String(format: String(localized: "%d회"), count)
         }
-        return "알 수 없음"
+        return String(localized: "알 수 없음")
     }
 
     private var temperatureText: String {
         if let celsius = appState.monitor.temperatureCelsius {
             return String(format: "%.1f°C", celsius)
         }
-        return "알 수 없음"
+        return String(localized: "알 수 없음")
     }
 
     private var timeRemainingText: String {
         guard let minutes = appState.monitor.timeRemainingMinutes else {
-            return "계산 중…"
+            return String(localized: "계산 중…")
         }
         let hours = minutes / 60
         let mins = minutes % 60
-        let duration = hours > 0 ? "\(hours)시간 \(mins)분" : "\(mins)분"
-        return appState.monitor.isCharging ? "완충까지 약 \(duration)" : "약 \(duration) 남음"
+        let duration = hours > 0
+            ? String(format: String(localized: "%d시간 %d분"), hours, mins)
+            : String(format: String(localized: "%d분"), mins)
+        return appState.monitor.isCharging
+            ? String(format: String(localized: "완충까지 약 %@"), duration)
+            : String(format: String(localized: "약 %@ 남음"), duration)
     }
 }

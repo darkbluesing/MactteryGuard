@@ -11,8 +11,8 @@ import SwiftUI
 ///   지정한 민트(#66E68A, 2026-11-17 스와치 샘플), 20% 이하면 빨강.
 /// - 단색 모드 (메뉴바, macOS 기본 배터리 표시 방식): 외곽선 없음 —
 ///   채움은 한 가지 잉크색, 단자·빈 부분은 잉크 45%로 faint하게 표시.
-///   라벨은 숫자 왼쪽 + 번개 오른쪽 스프레드 배치, 둘 다 반대색 단색
-///   (사용자 더미 기준, 2026-11-17). 어두운 곳에서는 흰색, 밝은 곳에서는 검은색.
+///   라벨은 숫자 + 번개(충전 중)를 가운데 정렬, 둘 다 반대색 단색
+///   (사용자 요청, 2026-11-17). 어두운 곳에서는 흰색, 밝은 곳에서는 검은색.
 struct BatteryLevelIcon: View {
     struct Geometry {
         let bodyWidth: CGFloat
@@ -27,14 +27,12 @@ struct BatteryLevelIcon: View {
         let fontSize: CGFloat
         let boltSize: CGFloat
         let labelSpacing: CGFloat
-        /// 단색 모드 스프레드 라벨의 좌우 여백 (컬러 모드에서는 미사용).
-        let labelPadding: CGFloat
 
         /// 팝오버 헤더용 (116×48).
         static let header = Geometry(
             bodyWidth: 116, bodyHeight: 48, cornerRadius: 11, strokeWidth: 2.5, inset: 4,
             nubWidth: 6, nubHeight: 18, nubCornerRadius: 2, nubSpacing: 2,
-            fontSize: 20, boltSize: 13, labelSpacing: 3, labelPadding: 0
+            fontSize: 20, boltSize: 13, labelSpacing: 3
         )
 
         /// 메뉴바 라벨용 (30×15, % 기호 없이 숫자만 — "100" + 번개가 들어가는 고정 너비).
@@ -42,7 +40,7 @@ struct BatteryLevelIcon: View {
         static let menuBar = Geometry(
             bodyWidth: 30, bodyHeight: 15, cornerRadius: 4.5, strokeWidth: 1.2, inset: 1.5,
             nubWidth: 2, nubHeight: 6, nubCornerRadius: 1, nubSpacing: 1,
-            fontSize: 11, boltSize: 8, labelSpacing: 1.5, labelPadding: 2.5
+            fontSize: 11, boltSize: 8, labelSpacing: 1.5
         )
     }
 
@@ -57,7 +55,7 @@ struct BatteryLevelIcon: View {
     let whiteBolt: Bool
     /// 단색 모드 (메뉴바, macOS 기본 배터리 표시 방식).
     /// 채움은 한 가지 잉크색, 단자·빈 부분은 잉크 45%.
-    /// 라벨은 숫자 왼쪽 + 번개 오른쪽 스프레드 배치, 둘 다 반대색 단색.
+    /// 라벨은 숫자 + 번개(충전 중) 가운데 정렬, 둘 다 반대색 단색.
     /// 어두운 곳에서는 흰색 잉크 + 검은 글자, 밝은 곳에서는 검은 잉크 + 흰 글자.
     let monochrome: Bool
     /// 단색 모드의 잉크색을 정한다 (메뉴바 라벨의 colorScheme을 전달받는다).
@@ -117,19 +115,23 @@ struct BatteryLevelIcon: View {
                     RoundedRectangle(cornerRadius: g.cornerRadius)
                         .stroke(inkColor, lineWidth: g.strokeWidth)
                 }
-                // 채움 (잔량 비례 너비)
+                // 채움 (잔량 비례 너비). 직사각형을 몸통 안쪽 모양으로 클립한다 —
+                // 왼쪽 모서리는 몸통에 맞게 둥글고, 오른쪽 경계는 잔량 위치에
+                // 정확히 수직으로 선다. 둥근 채움을 쓰면 오른쪽 경계가 곡선으로
+                // 밀려 보여 50%인데도 적어 보이는 문제가 있었다 (2026-11-17).
                 HStack(spacing: 0) {
-                    Color.clear.frame(width: g.inset)
-                    RoundedRectangle(cornerRadius: max(1, g.cornerRadius - 3))
+                    Rectangle()
                         .fill(fillColor)
-                        .frame(width: fillWidth, height: g.bodyHeight - g.inset * 2)
+                        .frame(width: fillWidth)
                     Spacer(minLength: 0)
                 }
+                .frame(width: g.bodyWidth - g.inset * 2, height: g.bodyHeight - g.inset * 2)
+                .clipShape(RoundedRectangle(cornerRadius: max(1, g.cornerRadius - g.inset)))
                 .animation(.easeInOut(duration: 0.25), value: percent)
-                // 라벨. 단색 모드는 스프레드 라벨(아래 참조), 컬러 모드는
+                // 라벨. 단색 모드는 가운데 정렬 라벨(아래 참조), 컬러 모드는
                 // 기본 레이어 + 채움 모양으로 마스킹한 반대색 레이어.
                 if monochrome {
-                    spreadLabel
+                    monochromeLabel
                 } else {
                     ZStack {
                         labelContent(whiteLayer: false)
@@ -148,34 +150,33 @@ struct BatteryLevelIcon: View {
         }
     }
 
-    /// 단색 모드(메뉴바) 라벨 — 사용자 더미(2026-11-17) 기준.
-    /// 숫자는 왼쪽, 번개는 오른쪽에 벌려 배치하고, 둘 다 반대색 단색으로 그린다.
-    /// 충전 중이 아닐 때는 숫자만 왼쪽에 표시한다 (위치 고정).
-    private var spreadLabel: some View {
+    /// 단색 모드(메뉴바) 라벨 — 사용자 요청(2026-11-17).
+    /// 충전 중이면 숫자 오른쪽에 번개를 붙여 함께 가운데 정렬하고,
+    /// 배터리만 쓸 때는 숫자만 가운데 정렬한다. 둘 다 반대색 단색.
+    private var monochromeLabel: some View {
         let g = geometry
-        return HStack(spacing: 0) {
+        return HStack(spacing: g.labelSpacing) {
             Text(showPercentSign ? "\(percent)%" : "\(percent)")
                 .font(.system(size: g.fontSize, weight: .semibold))
-            Spacer(minLength: 0)
             if isCharging {
                 Image(systemName: "bolt.fill")
                     .font(.system(size: g.boltSize, weight: .bold))
             }
         }
         .foregroundStyle(inverseColor)
-        .padding(.horizontal, g.labelPadding)
         .frame(width: g.bodyWidth, height: g.bodyHeight)
     }
 
-    /// 채움 모양 마스크 (흰색 레이어용). 채움과 같은 위치·크기다.
+    /// 채움 모양 마스크 (흰색 레이어용). 채움과 같은 위치·크기·클립이다.
     private func fillMask(fillWidth: CGFloat) -> some View {
         let g = geometry
         return HStack(spacing: 0) {
-            Color.clear.frame(width: g.inset)
-            RoundedRectangle(cornerRadius: max(1, g.cornerRadius - 3))
-                .frame(width: fillWidth, height: g.bodyHeight - g.inset * 2)
+            Rectangle()
+                .frame(width: fillWidth)
             Spacer(minLength: 0)
         }
+        .frame(width: g.bodyWidth - g.inset * 2, height: g.bodyHeight - g.inset * 2)
+        .clipShape(RoundedRectangle(cornerRadius: max(1, g.cornerRadius - g.inset)))
         .frame(width: g.bodyWidth, height: g.bodyHeight)
     }
 
@@ -193,15 +194,17 @@ struct BatteryLevelIcon: View {
             boltColor = whiteBolt ? .white : .primary
             textColor = .primary
         }
+        // 충전 중이면 숫자 오른쪽에 번개를 붙여 함께 중앙 정렬하고,
+        // 배터리만 쓸 때는 숫자만 중앙 정렬한다 (사용자 요청, 2026-11-17).
         return HStack(spacing: g.labelSpacing) {
+            Text(showPercentSign ? "\(percent)%" : "\(percent)")
+                .font(.system(size: g.fontSize, weight: .semibold))
+                .foregroundStyle(textColor)
             if isCharging {
                 Image(systemName: "bolt.fill")
                     .font(.system(size: g.boltSize, weight: .bold))
                     .foregroundStyle(boltColor)
             }
-            Text(showPercentSign ? "\(percent)%" : "\(percent)")
-                .font(.system(size: g.fontSize, weight: .semibold))
-                .foregroundStyle(textColor)
         }
     }
 }

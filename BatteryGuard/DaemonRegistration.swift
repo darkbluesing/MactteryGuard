@@ -46,11 +46,11 @@ final class DaemonRegistration {
     /// 등록 상태의 UI 표시용 문자열.
     static func displayName(for status: SMAppService.Status) -> String {
         switch status {
-        case .notRegistered: return "미등록"
-        case .enabled: return "등록됨"
-        case .requiresApproval: return "승인 대기 중"
-        case .notFound: return "찾을 수 없음"
-        @unknown default: return "알 수 없음"
+        case .notRegistered: return String(localized: "미등록")
+        case .enabled: return String(localized: "등록됨")
+        case .requiresApproval: return String(localized: "승인 대기 중")
+        case .notFound: return String(localized: "찾을 수 없음")
+        @unknown default: return String(localized: "알 수 없음")
         }
     }
 }

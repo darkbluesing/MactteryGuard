@@ -19,7 +19,7 @@ final class DaemonClient {
         if let connection {
             guard let proxy = connection.remoteObjectProxy as? MactteryGuardHelperProtocol else {
                 throw GuardXPCError.error(
-                    code: GuardXPCError.internalError, description: "XPC 프록시를 만들 수 없습니다."
+                    code: GuardXPCError.internalError, description: String(localized: "XPC 프록시를 만들 수 없습니다.")
                 )
             }
             return proxy
@@ -36,7 +36,7 @@ final class DaemonClient {
         connection = newConnection
         guard let proxy = newConnection.remoteObjectProxy as? MactteryGuardHelperProtocol else {
             throw GuardXPCError.error(
-                code: GuardXPCError.internalError, description: "XPC 프록시를 만들 수 없습니다."
+                code: GuardXPCError.internalError, description: String(localized: "XPC 프록시를 만들 수 없습니다.")
             )
         }
         return proxy
@@ -54,7 +54,7 @@ final class DaemonClient {
                 try? await Task.sleep(nanoseconds: timeoutSeconds * 1_000_000_000)
                 box.resume(with: .failure(GuardXPCError.error(
                     code: GuardXPCError.internalError,
-                    description: "응답 시간 초과 (\(timeoutSeconds)초)"
+                    description: String(format: String(localized: "응답 시간 초과 (%d초)"), Int(timeoutSeconds))
                 )))
             }
         }
@@ -72,7 +72,7 @@ final class DaemonClient {
                     resume(.success(data))
                 } else {
                     resume(.failure(GuardXPCError.error(
-                        code: GuardXPCError.internalError, description: "빈 응답을 받았습니다."
+                        code: GuardXPCError.internalError, description: String(localized: "빈 응답을 받았습니다.")
                     )))
                 }
             }

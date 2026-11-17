@@ -122,7 +122,7 @@ final class AppState: ObservableObject {
             lastError = nil
             logger.debug("설정 전송 완료 (제어 \(settings.controlEnabled ? "켬" : "끔"), 상한 \(settings.upperLimit)%)")
         } catch {
-            lastError = "설정 전송 실패: \(error.localizedDescription)"
+            lastError = String(format: String(localized: "설정 전송 실패: %@"), error.localizedDescription)
             logger.error("설정 전송 실패: \(error.localizedDescription)")
         }
     }
@@ -169,7 +169,7 @@ final class AppState: ObservableObject {
             await refreshNow()
         } catch {
             registrationStatus = registration.status
-            lastError = "등록 실패: \(error.localizedDescription)"
+            lastError = String(format: String(localized: "등록 실패: %@"), error.localizedDescription)
             logger.error("데몬 등록 실패: \(error.localizedDescription)")
         }
     }
@@ -187,7 +187,7 @@ final class AppState: ObservableObject {
             logger.info("1회 완충 요청 완료")
             await pollDaemon()
         } catch {
-            lastError = "1회 완충 실패: \(error.localizedDescription)"
+            lastError = String(format: String(localized: "1회 완충 실패: %@"), error.localizedDescription)
             logger.error("1회 완충 실패: \(error.localizedDescription)")
         }
     }
@@ -203,7 +203,7 @@ final class AppState: ObservableObject {
             logger.info("1회 완충 취소 완료")
             await pollDaemon()
         } catch {
-            lastError = "1회 완충 취소 실패: \(error.localizedDescription)"
+            lastError = String(format: String(localized: "1회 완충 취소 실패: %@"), error.localizedDescription)
             logger.error("1회 완충 취소 실패: \(error.localizedDescription)")
         }
     }
@@ -219,7 +219,7 @@ final class AppState: ObservableObject {
             logger.info("제어 일시정지 \(paused ? "켬" : "끔")")
             await pollDaemon()
         } catch {
-            lastError = "일시정지 변경 실패: \(error.localizedDescription)"
+            lastError = String(format: String(localized: "일시정지 변경 실패: %@"), error.localizedDescription)
             logger.error("일시정지 변경 실패: \(error.localizedDescription)")
         }
     }
@@ -237,7 +237,7 @@ final class AppState: ObservableObject {
             logger.info("데몬 제거 준비 완료 (충전 복원 확인)")
         } catch {
             logger.warn("데몬 제거 준비 실패 (계속 진행): \(error.localizedDescription)")
-            lastError = "충전 복원 확인 실패: \(error.localizedDescription)"
+            lastError = String(format: String(localized: "충전 복원 확인 실패: %@"), error.localizedDescription)
         }
         let status = registration.status
         if status == .enabled || status == .requiresApproval {
@@ -245,7 +245,7 @@ final class AppState: ObservableObject {
                 try registration.unregister()
                 registrationStatus = registration.status
             } catch {
-                lastError = "등록 해제 실패: \(error.localizedDescription)"
+                lastError = String(format: String(localized: "등록 해제 실패: %@"), error.localizedDescription)
                 logger.error("데몬 등록 해제 실패: \(error.localizedDescription)")
                 return
             }

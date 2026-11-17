@@ -91,12 +91,12 @@ public enum BackendKind: String, Codable, Sendable {
 
     public var displayName: String {
         switch self {
-        case .unknown: return "확인 중"
-        case .native: return "네이티브 (macOS 상한)"
-        case .adapter: return "어댑터 (CHIE)"
-        case .legacy: return "레거시 (SMC)"
-        case .firmware: return "펌웨어"
-        case .unsupported: return "제어 불가"
+        case .unknown: return String(localized: "확인 중")
+        case .native: return String(localized: "네이티브 (macOS 상한)")
+        case .adapter: return String(localized: "어댑터 (CHIE)")
+        case .legacy: return String(localized: "레거시 (SMC)")
+        case .firmware: return String(localized: "펌웨어")
+        case .unsupported: return String(localized: "제어 불가")
         }
     }
 }
@@ -120,13 +120,13 @@ public enum ControlState: String, Codable, Sendable {
 
     public var displayName: String {
         switch self {
-        case .idle: return "대기 중"
-        case .charging: return "충전 중"
-        case .holding: return "상한 유지 중"
-        case .calibrating: return "macOS 보정 중"
-        case .dischargeBack: return "상한으로 되돌리는 중"
-        case .failOpen: return "오류 — 충전 허용됨"
-        case .paused: return "일시정지됨"
+        case .idle: return String(localized: "대기 중")
+        case .charging: return String(localized: "충전 중")
+        case .holding: return String(localized: "상한 유지 중")
+        case .calibrating: return String(localized: "macOS 보정 중")
+        case .dischargeBack: return String(localized: "상한으로 되돌리는 중")
+        case .failOpen: return String(localized: "오류 — 충전 허용됨")
+        case .paused: return String(localized: "일시정지됨")
         }
     }
 }
@@ -142,9 +142,9 @@ public enum TopUpState: String, Codable, Sendable {
 
     public var displayName: String {
         switch self {
-        case .inactive: return "꺼짐"
-        case .active: return "1회 완충 중"
-        case .reached: return "100% 도달 — 복귀 대기"
+        case .inactive: return String(localized: "꺼짐")
+        case .active: return String(localized: "1회 완충 중")
+        case .reached: return String(localized: "100% 도달 — 복귀 대기")
         }
     }
 }
@@ -161,10 +161,10 @@ public enum BatteryCondition: String, Sendable {
 
     public var displayName: String {
         switch self {
-        case .normal: return "정상"
-        case .fair: return "보통"
-        case .poor: return "교체 권장"
-        case .unknown: return "알 수 없음"
+        case .normal: return String(localized: "정상")
+        case .fair: return String(localized: "보통")
+        case .poor: return String(localized: "교체 권장")
+        case .unknown: return String(localized: "알 수 없음")
         }
     }
 }
